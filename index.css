@@ -106,11 +106,3 @@ body {
     font-family: Menlo, "Courier New";
     position: relative;
 }
-
-.author {
-    position: absolute;
-    display: inline-block;
-    right: 1rem;
-    bottom: -25px;
-    border-radius: 50px;
-}

@@ -64,9 +64,7 @@
             event.dataTransfer.effectAllowed = 'move';
 
             // setData => Fuinktioniert im IE nicht bzw. nur bedingt
-            // !!!! wird aber scheinbar im Firefox für die Vorschau benötigt
             //event.dataTransfer.setData('text/html', activeDragElement.innerHtml);
-            event.dataTransfer.setData("text/uri-list", "http://www.mozilla.org");
 
             // Subscribing to the events at dnd
             element.addEventListener('dragover', _onDragOver, false);
