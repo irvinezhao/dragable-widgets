@@ -8,6 +8,9 @@
         let placeholderElement;
         let startElementRect;
 
+        // import placeholder
+        placeholderElement = element.querySelector('.tpl-placeholder');
+
         // Function responsible for sorting
         const _onDragOver = function (event) {
             placeholderElement.style.width = startElementRect.width + "px";
@@ -49,7 +52,8 @@
             activeDragElement.classList.remove('moving');
             element.removeEventListener('dragover', _onDragOver, false);
             element.removeEventListener('dragend', _onDragEnd, false);
-        };
+        }
+
         element && element.addEventListener("dragstart", function (event) {
             // don't allow selection to be dragged if it is not draggable
             if (event.target.getAttribute("draggable") !== "true") {
@@ -63,29 +67,23 @@
             // Limiting the movement type
             event.dataTransfer.effectAllowed = 'move';
 
-            // setData => Fuinktioniert im IE nicht bzw. nur bedingt
-            //event.dataTransfer.setData('text/html', activeDragElement.innerHtml);
-
             // Subscribing to the events at dnd
             element.addEventListener('dragover', _onDragOver, false);
             element.addEventListener('dragend', _onDragEnd, false);
 
             activeDragElement.classList.add('moving');
+        })
 
-            // import placeholder
-            placeholderElement = element.querySelector('.tpl-placeholder');
-        });
+        function closest(el, clazz, stopClazz) {
+            if (el.classList.contains(stopClazz)) return null;
 
-        function closest (el, clazz, stopClazz) {
-            if(el.classList.contains(stopClazz)) return null;
-        
-            while ((el = el.parentElement) 
-                   && !el.classList.contains(clazz)
-                   && !el.classList.contains(stopClazz));
-          
+            while ((el = el.parentElement) &&
+                !el.classList.contains(clazz) &&
+                !el.classList.contains(stopClazz));
+
             return el.classList.contains(stopClazz) ? null : el;
         }
-        
+
     })
 
 }(jQuery));
